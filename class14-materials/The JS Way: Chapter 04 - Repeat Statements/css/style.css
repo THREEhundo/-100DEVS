@@ -1,0 +1,119 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+    text-align: center;
+}
+
+form {
+    margin: 0 auto;
+    width: max-content;
+}
+
+form>label {
+    display: inline;
+}
+
+ul {
+    margin: 0;
+    width: max-content;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+form>* {
+    display: block;
+    width: 100%;
+}
+
+section {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+section>* {
+    width: 80%;
+}
+
+.active {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.carousel-item {
+    display: none;
+}
+
+.carousel-item:nth-child(1) {
+    display: block;
+}
+
+.border {
+    padding: 1rem 2rem;
+    border: 2px solid dodgerblue;
+    width: 150px;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.multiplication-container {
+    display: flex;
+    flex-flow: column wrap;
+    height: 300px;
+    justify-content: center;
+    margin: 0 auto;
+    width: 350px;
+}
+
+form {
+    width: max-content;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    border: 3px solid salmon;
+    padding: 1rem;
+    border-radius: 10px;
+
+}
+
+.multiply>form>input[type="number"],
+form>input[type="text"] {
+    width: 200px;
+    line-height: 2;
+    margin-top: 0.2rem;
+}
+
+input[type="submit"i] {
+    width: 5rem;
+    padding: 0.5rem 1rem;
+    background: dodgerblue;
+    color: white;
+    border: 2px solid salmon;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

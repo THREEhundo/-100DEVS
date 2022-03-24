@@ -1,0 +1,52 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
+header,
+footer,
+.container {
+	width: 100%;
+}
+
+#columns {
+	height: 25%;
+}
+
+#halves {
+	height: 35%;
+}
+
+header,
+footer {
+	height: 20%;
+}
+
+.triple {
+	float: left;
+	width: 33.3333%;
+	height: 100%;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#col-2 {
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.half {
+	float: left;
+	width: 50%;
+	height: 100%;
+	border-bottom: 1px solid #ccc;
+}
+
+section>section.half {
+	border-right: 1px solid #ccc;
+}

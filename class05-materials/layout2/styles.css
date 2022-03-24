@@ -1,0 +1,48 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
+header, footer, section {
+	width: 100%;
+}
+
+header, footer {
+	height: 15%;
+}
+
+header, .full-row {
+	border-bottom: 1px solid #ccc;
+}
+
+.full-row {
+	height: 30%;
+}
+
+footer {
+	border-top: 1px solid #ccc;
+}
+
+#content {
+	height: 40%;
+}
+
+aside, .two-thirds {
+	float: left;
+	height: 100%;
+}
+
+aside {
+	width: 33.3333%;
+	border-right: 1px solid #ccc;
+}
+
+.two-thirds {
+	width: 66.6666%;
+}
+

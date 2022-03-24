@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is where your description goes">
+    <meta name="keywords" content="one, two, three">
+
+    <title>The JS Way: Chapter 4</title>
+
+    <!-- external CSS link -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section>
+        <ul class="carousel">
+            <li class="carousel-item active">
+                <h1>1</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>2</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>3</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>4</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>5</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>6</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>7</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>8</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>9</h1>
+            </li>
+            <li class="carousel-item">
+                <h1>10</h1>
+            </li>
+        </ul>
+        <form action="">
+            <label for="number">Enter a number!</label><input type="number" name="number" id=""><input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section class="multiply">
+        <h1>Multiplication Table</h1>
+        <h1 class="userNum"></h1>
+        <form action="" id="multiply-form">
+            <label for="num">Enter a number between 2-9</label>
+            <input type="number" name="num" id="multiplication-num-input" min="2" max="9" required aria-required="true">
+            <input class="multiply-submit" type="submit" value="Submit">
+        </form>
+        <section class="multiplication-container">
+
+        </section>
+    </section>
+
+    <section class="guess-the-number">
+        <h1>100 Numbers</h1>
+        <h6 id="good-job"></h6>
+        <form action=""><label for="guess-input"></label><input type="number" name="guess-input" id="guess-input"><input type="submit" value="Submit" id="guess-the-num-submit"></form>
+    </section>
+    <section class="word-game">
+        <h1>Both of these words are used every day</h1>
+        <h2>One is used more then the other, which is used more all depends on the person</h2>
+        <h6>There are two answers. Good luck!</h6>
+
+        <form action="" class="guess-the-word">
+            <label for="word">Guess the word</label>
+            <input type="text" name="word" id="word-input">
+            <input type="submit" value="Submit" id="word-submit">
+        </form>
+        <h2 id="wrong"></h2>
+        <h1 id="success"></h1>
+    </section>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

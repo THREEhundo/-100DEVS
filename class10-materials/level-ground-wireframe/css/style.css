@@ -1,0 +1,373 @@
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+:root {
+    /****** 10px ******/
+    font-size: 62.5%;
+    font-family: 'Oswald',
+        sans-serif;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+    font-weight: 100;
+    line-height: 1.5;
+}
+
+body>section {
+    text-align: center;
+}
+
+.logo,
+.social-icon {
+    width: 25px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 100;
+}
+
+
+ul {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+p,
+a {
+    font-size: 1.6rem;
+    font-weight: 2 00;
+}
+
+.description {
+    width: 50%;
+    margin: auto;
+}
+
+.border-link {
+    display: inline-block;
+    border: 1px solid black;
+    color: black;
+    padding: 0.8em 5rem;
+    margin: 2rem;
+    text-decoration: none;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+.container {
+    float: left;
+    display: block;
+    width: 100%;
+}
+
+header {
+    padding: 0 2rem;
+}
+
+header,
+main {
+    background: #66768a;
+    color: white;
+}
+
+header * {
+    float: left;
+    display: block;
+}
+
+main+section {
+    margin: 10rem 0;
+}
+
+
+.link,
+.donate-link {
+    margin: 2rem 2rem;
+}
+
+.link {
+    float: left;
+    display: block;
+}
+
+header .logo {
+    float: left;
+    display: block;
+    margin: -5rem 50%;
+}
+
+.donate-link {
+    float: right;
+    border-radius: 5px;
+    border: 1px solid white;
+    background: white;
+    color: #66768a;
+    padding: 0.5rem 1rem;
+}
+
+/******************************************
+/* WHY
+/*******************************************/
+main * {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+
+.main-heading {
+    font-size: 8rem;
+    margin: 3rem auto;
+}
+
+.sub-heading {
+    width: 70%;
+    max-width: 1000px;
+}
+
+.fa-play-circle {
+    width: 25px;
+    vertical-align: baseline;
+    margin-right: 1rem;
+}
+
+.video-link {
+    display: block;
+    width: auto;
+    font-size: 1.8rem;
+    margin: 3rem auto;
+}
+
+.placeholder {
+    color: rgb(62 65 79);
+    display: block;
+    margin: auto;
+    width: 10%;
+    padding: 2rem 0;
+}
+
+.gym-classes {
+    background: #dbdfe2;
+}
+
+/******************************************
+/* VISIT
+/*******************************************/
+.gray {
+    background: lightgray;
+}
+
+.visit {
+    padding-top: 2rem;
+}
+
+/******************************************
+/* VOLUNTEER
+/*******************************************/
+.gray>section {
+    float: left;
+    width: 40%;
+    margin: 10rem 0;
+}
+
+section>section:first-child {
+    margin-left: 10%;
+    padding-left: 15%;
+}
+
+.gray>section+section {
+    float: right;
+    margin-right: 10%;
+    padding-right: 15%;
+}
+
+
+.gray p {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 400px;
+}
+
+.volunteer-conatiner {
+    padding: 10rem 0;
+}
+
+.volunteer-description,
+.why-description {
+    width: 30%;
+}
+
+/******************************************
+/* FOOTER
+/*******************************************/
+footer {
+    background: #161f2a;
+    color: #fff;
+}
+
+footer * {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    line-height: 1.5;
+}
+
+.footer-left {
+    float: left;
+}
+
+.footer-left,
+.footer-right,
+.footer-company-info {
+    margin: 0 4rem;
+}
+
+.footer-heading {
+    margin-bottom: 0;
+    font-weight: 700;
+    color: gray;
+}
+
+.footer-company-info {
+    border-top: 1px solid white;
+}
+
+.socials-list,
+.site-links {
+    height: 35px;
+}
+
+.organization-type {
+    width: 80%;
+}
+
+.socials-list *,
+.site-links *,
+.organization-type {
+    float: left;
+    display: block;
+}
+
+.site-links {
+    margin: 0;
+}
+
+.site-link {
+    margin-right: 2rem;
+}
+
+.social {
+    width: 25px;
+    height: 25px;
+}
+
+.fa-2xl {
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+.footer-right {
+    float: right;
+    margin: 2.5rem 4rem;
+}
+
+.footer-right:nth-child(1) {
+    margin-top: 1rem;
+}
+
+.footer-right h6 {
+    color: white;
+}
+
+.footer-right h6+h6 {
+    margin-bottom: 1rem;
+}
+
+.footer-right p {
+    margin: 0;
+    font-weight: 100;
+}
+
+.footer-company-info {
+    padding-top: 1rem;
+}
+
+footer .logo {
+    float: right;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+@media screen and (max-width: 1325px) {
+    .placeholder {
+        width: 100%;
+    }
+
+    section>section:first-child {
+        padding-left: 0;
+    }
+
+    .gray>section+section {
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 910px) {
+
+    .volunteer-description,
+    .why-description {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    section>section:first-child {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .gray>section+section {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .gray>section {
+        margin: 5rem 0;
+    }
+}

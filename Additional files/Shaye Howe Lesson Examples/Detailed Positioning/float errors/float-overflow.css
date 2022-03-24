@@ -1,0 +1,26 @@
+.box-set, .box {
+	border-radius: 6px;
+}
+
+.box-set {
+	background: #b1b1b4;
+	overflow: auto;
+}
+
+.box {
+	background: #2db34a;
+	box-shadow: 0 15px 20px #ff7b29;
+	float: left;
+	margin: 1.858736059%;
+	padding: 20px 0;
+	text-align: center;
+	width: 29.615861214%;
+	color: #eaeaed;
+}
+
+.box:nth-child(2) {
+	position: relative;
+	top: 20px;
+}
+
+

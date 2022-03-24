@@ -1,0 +1,123 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.meme {
+    margin: auto;
+    height: 852px;
+    width: 799px;
+    aspect-ratio: 852 / 799;
+    background: url('../assets/69420.jpeg') no-repeat center;
+    position: relative;
+}
+
+#btc,
+#eth {
+    width: 66px;
+    font-size: 1.3rem;
+    position: absolute;
+    top: 258px;
+    right: 99px;
+    background: white;
+}
+
+#eth {
+    top: 343px;
+    width: 54px;
+}
+
+.ticker {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ticker span {
+    position: relative;
+    display: inline-block;
+    width: 10px;
+}
+
+.ticker span::before,
+.ticker span::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden;
+    transition: transform .75s;
+}
+
+.ticker span::before {
+    content: attr(data-previous);
+    z-index: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.ticker span::before {
+    transform: translate3d(0, 102.5%, 0);
+}
+
+.ticker span::after {
+    content: attr(data-current);
+    z-index: 2;
+    transform: translate3d(0, -102.5%, 0);
+}
+
+.ticker span::after {
+    transform: translate3d(0, 0, 0);
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+.clock span:before,
+.clock span:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden;
+    transition: transform .75s;
+}
+
+.clock span:before {
+    content: attr(data-old);
+    z-index: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.clock .flip:before {
+    transform: translate3d(0, 102.5%, 0);
+}
+
+.clock span:after {
+    content: attr(data-now);
+    z-index: 2;
+    transform: translate3d(0, -102.5%, 0);
+}
+
+.clock .flip:after {
+    transform: translate3d(0, 0, 0);
+}

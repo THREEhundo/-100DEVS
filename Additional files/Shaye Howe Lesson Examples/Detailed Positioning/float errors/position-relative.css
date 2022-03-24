@@ -1,0 +1,30 @@
+.box-set, .box {
+	border-radius: 6px;
+}
+
+.box-set {
+	background: #eaeaed;
+}
+
+.box {
+	background: #2db34a;
+	height: 80px;
+	position: relative;
+	width: 80px;
+	color: #eaeaed;
+}
+
+.box:nth-child(1) {
+	top: 20px;
+}
+
+.box:nth-child(2) {
+	left: 40px;
+}
+
+.box:nth-child(3) {
+	bottom: -10px;
+	right: 20px;
+}
+
+

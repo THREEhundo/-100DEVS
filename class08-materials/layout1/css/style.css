@@ -1,0 +1,240 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 62.5%;
+  line-height: 0.9;
+}
+
+body {
+  height: 100vh;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+strong {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+input, p, a {
+  font-size: 2.5rem;
+}
+
+p {
+  line-height: 1.5;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+nav, main, aside {
+  float: left;
+  width: 10%;
+  padding: 1.5rem;
+}
+
+nav {
+  height: 100%;
+  font-size: 1.2rem;
+}
+
+main, aside {
+  padding-bottom: 0;
+}
+
+main {
+  width: 60%;
+  padding-left: 0;
+}
+
+aside {
+  width: 30%;
+  padding-top: 0;
+}
+
+img {
+  width: 100%;
+}
+
+.secondary-article {
+  width: 90%;
+  height: 40%;
+  float: right;
+  padding-bottom: 5px;
+}
+
+/******************************************
+/* NAV STYLES
+/*******************************************/
+
+form {
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+}
+
+p, nav {
+  color: gray;
+}
+
+.nav-searchbar, .nav-link {
+  text-decoration: none;
+  color: gray;
+  letter-spacing: 1px;
+  margin: 1rem 0;
+  display: inline-block;
+  font-weight: 200;
+}
+
+.nav-searchbar {
+  border: none;
+  margin-bottom: 0;
+  width: 80%;
+}
+
+input::placeholder {
+  color: gray;
+  font-weight: 200 !important;
+}
+
+.nav-searchbar::-webkit-input-placeholder {
+  font-weight: 300;
+}
+
+input + span:after {
+  content: '🔍';
+  position: absolute;
+  left: 90px;
+  bottom: 7px;
+}
+
+nav ul li:nth-child(8), .more-links {
+  margin-bottom: 1rem;;
+}
+
+.more-links {
+  margin-top: 1rem;
+  content: '';
+  width: 20px;
+  padding-top: 1rem;
+}
+
+.divider {
+  content: '';
+  width: 20px;
+  height: 1px;
+  position: absolute;
+  background : gray;
+}
+
+/******************************************
+/* MAIN STYLES
+/*******************************************/
+
+#extra-crunch{
+  width: 15%;
+}
+
+h4 {
+  display: block;
+  padding: 2rem 0.8rem;
+  padding-left: 0;
+  border-bottom: 1px solid lightgray;
+  margin-top: 2rem;
+}
+
+.main-article-summary {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.author, .date-time {
+  font-size: 1.7rem;
+  color: gray;
+}
+
+.author {
+  color: black;
+}
+
+#main-author {
+  padding-top: 0;
+}
+
+/******************************************
+/* ASIDE STYLES
+/*******************************************/
+
+.article-headline {
+  margin: 1rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.article-headline:last-child {
+  border-bottom: none;
+}
+
+.author {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/******************************************
+/* THE LATEST STYLES
+/*******************************************/
+
+.secondary-article-title {
+  padding: 2rem 0;
+}
+
+.col-1, .col-2, .col-3 {
+  width: 33.3333%;
+  float: left;
+  padding: 0 0.8rem;
+}
+
+.col-1 > h2 {
+  padding-top: 0;
+}
+
+.col-3 {
+  width: 30%;
+  float: right;
+}

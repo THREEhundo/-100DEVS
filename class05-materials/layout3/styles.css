@@ -1,0 +1,44 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
+header, footer, .container {
+	width: 100%;
+}
+
+header, footer {
+	height: 15%;
+}
+
+.container {
+	height: 70%;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.slim, .thick {
+	border-right: 1px solid #ccc;
+}
+
+.slim, .thick, .shmedium {
+	float: left;
+	height: 100%;
+}
+
+.slim {
+	width: 20%;
+}
+
+.thick {
+	width: 40%;
+}
+
+.shmedium {
+	width: 20%;
+}

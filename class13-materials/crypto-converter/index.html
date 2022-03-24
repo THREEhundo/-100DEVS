@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is where your description goes">
+    <meta name="keywords" content="one, two, three">
+
+    <title>Title in the tab</title>
+
+    <!-- external CSS link -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section id="info">
+        <span id="time"></span>
+        <h1 id="coinsHeld"></h1>
+    </section>
+    <section class="meme">
+        <p id="btc">69,000</p>
+        <p id="eth">4,200</p>
+    </section>
+    <form action="">
+        <label for="USD">$</label>
+        <input id="USD" type="number" min="0.01" step="0.01">
+    </form>
+
+    <p class="ticker">
+        <span data-previous='6' data-current='' class="digit" id="tenThousand">&nbsp;</span>
+        <span data-previous='9' data-current='' class="digit" id="thousand">&nbsp;</span>
+        <span class="comma">,</span>
+        <span data-previous='0' data-current='' class="digit" id="hundred">&nbsp;</span>
+        <span data-previous='0' data-current='' class="digit" id="ten">&nbsp;</span>
+        <span data-previous=' 0' data-current='' class="digit" id="one">&nbsp;</span>
+    </p>
+    <p class="ticker">
+        <span data-previous='4' data-current='' class="digit" id="thousand">&nbsp;</span>
+        <span class="comma">,</span>
+        <span data-previous='2' data-current='' class="digit" id="hundred">&nbsp;</span>
+        <span data-previous='0' data-current='' class="digit" id="ten">&nbsp;</span>
+        <span data-previous='0' data-current='' class="digit" id="one">&nbsp;</span>
+    </p>
+    <button id="convertBTC">Convert to BTC</button>
+    <button id="convertETH">Convert to ETH</button>
+
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

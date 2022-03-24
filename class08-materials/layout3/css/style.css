@@ -1,0 +1,302 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
+}
+
+body * {
+  font-family: 'Open Sans',
+    sans-serif;
+  font-weight: 400;
+  color: black;
+  vertical-align: baseline;
+  line-height: 1;
+  float: left;
+}
+
+header,
+main,
+img,
+.banner,
+.container,
+.logo {
+  width: 100%;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+p,
+span,
+li,
+a,
+i,
+input::placeholder {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header * {
+  color: white;
+  float: left;
+}
+
+header>* {
+  border-right: 1px solid gray;
+}
+
+header {
+  background: black;
+}
+
+.logo-link {
+  width: 10%;
+  padding: 0;
+}
+
+.logo {
+  max-width: 135px;
+  max-height: 50px;
+}
+
+.fa-circle-user {
+  padding: 0 0.5rem 0 0;
+}
+
+.sign-in-link {
+  width: 15%;
+  padding: 1rem 3rem 1rem 1rem;
+}
+
+header>ul {
+  width: 55%;
+}
+
+.nav-li {
+  padding: 1rem 1.15rem;
+  border-right: 1px solid gray;
+}
+
+ul,
+header>*:last-child {
+  border: none;
+}
+
+.fa-caret-down {
+  float: right;
+  padding-left: 7rem;
+}
+
+.search-container {
+  text-align: center;
+  float: right;
+  padding: 0.5rem;
+  width: 20%;
+}
+
+header>div>form {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+input[placeholder] {
+  height: 2rem;
+  width: 100%;
+  color: black;
+  font-size: 1.2rem;
+}
+
+::placeholder {
+  vertical-align: text-bottom;
+  color: black;
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  color: gray;
+  top: 15%;
+  right: 5%;
+}
+
+.banner {
+  font-size: 2.4rem;
+  padding: 1rem 0.2rem;
+  width: 100%;
+}
+
+.banner * {
+  margin: 2rem 1rem;
+  font-size: 2.4rem;
+}
+
+.banner-h2 {
+  border-left: 4px solid red;
+  padding-left: 1rem;
+  margin-left: 1rem;
+}
+
+time {
+  float: right;
+  color: gray;
+  margin: 0.83rem 0;
+}
+
+.half {
+  width: 50%;
+  padding: 1rem;
+}
+
+.relative-article-link {
+  position: relative;
+}
+
+.article-heading,
+.blurb,
+.category,
+.quad-article-heading {
+  position: absolute;
+  color: white;
+  padding: 0 1rem;
+}
+
+.blurb,
+.category {
+  font-weight: 300;
+}
+
+.article-img {
+  filter: brightness(80%)
+}
+
+.article-heading {
+  bottom: 70px;
+  font-weight: 400;
+}
+
+.blurb {
+  bottom: 40px;
+  line-height: 1.5;
+}
+
+.category {
+  border-left: 2px solid red;
+  bottom: 5px;
+  margin-left: 1rem;
+}
+
+.quad-container:nth-of-type(1) {
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.quad-container:nth-of-type(2) {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+.quad-container:nth-of-type(3) {
+  padding-right: 1rem;
+}
+
+.quad-container:nth-of-type(4) {
+  padding-left: 1rem;
+}
+
+.quad-article-heading {
+  bottom: 40px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.quad-category {
+  bottom: 10px;
+  padding: 0 1rem;
+  margin: 0 0 0 1rem;
+}
+
+.third {
+  width: 33.3333%;
+}
+
+.quad-container {
+  width: 50%;
+}
+
+.third .article-link h2 {
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.third .article-link .blurb,
+.third .article-link .category {
+  position: static;
+  color: black;
+}
+
+.third .article-link .category {
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.third .article-link .blurb {
+  padding: 0;
+
+}
+
+#trump {
+  width: 101%;
+  overflow: hidden;
+}
+
+.container>.third {
+  padding: 0 0.5rem;
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

@@ -1,0 +1,287 @@
+/* Box Model Hack */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+:root {
+  /****** 10px ******/
+  font-size: 62.5%;
+  color: rgb(48, 48, 83);
+  font-family: sans-serif;
+}
+
+body {
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  background: #F4F9Fe;
+}
+
+.wrapper>* {
+  float: left;
+  margin: 0;
+}
+
+button,
+input[type="button"] {
+  color: white;
+  background: #2C3844;
+  border: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: 2;
+}
+
+ul {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+  color: #2C3844;
+}
+
+li {
+  display: inline-block;
+}
+
+i {
+  font-size: 1.55rem;
+}
+
+a {
+  color: rgb(48, 48, 83);
+  text-decoration: none;
+}
+
+/* 2em */
+h1 {
+  font-size: 5rem;
+}
+
+/* 1.5em */
+h2 {
+  font-size: 3.7rem;
+}
+
+h3 {
+  font-size: 2.4rem;
+}
+
+p,
+a,
+button,
+input {
+  font-size: 1.6rem;
+}
+
+/******************************************
+/* HEADER
+/*******************************************/
+
+header {
+  padding: 2rem 0;
+  height: 6%;
+}
+
+.home-link {
+  margin-left: 10%;
+  padding: 1rem 0 1rem 1rem;
+  /* padding-left: 1%; */
+  width: 9%;
+  max-width: 112px;
+}
+
+#center-nav {
+  margin: 0 25.5%;
+  width: 20%;
+  padding: 0.5rem 0;
+}
+
+.nav-link {
+  padding: 1rem 5%;
+}
+
+.nav-link:nth-child(1) {
+  width: 21.7%;
+}
+
+.nav-link:nth-child(2) {
+  width: 26.25%;
+}
+
+.nav-link:nth-child(3) {
+  width: 22.75%;
+}
+
+.nav-link:nth-child(4) {
+  width: 24.7%;
+}
+
+.nav-button,
+input[type="button"] {
+  padding: 0.25rem 1rem;
+  max-width: 112px;
+}
+
+.nav-button {
+  float: right;
+  width: 9%;
+  margin: 0.5rem 10% 0.5rem 0;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+/******************************************
+/* MAIN
+/*******************************************/
+main {
+  height: 44%;
+  padding: 0 20%;
+}
+
+.half {
+  width: 50%;
+}
+
+.half:nth-child(2) {
+  background-image: url(../assets/macbook-and-phone.png);
+  background-clip: c;
+}
+
+/* .half>img {
+  width: 100%;
+  height: auto;
+  ;
+} */
+
+.main-content {
+  padding-right: 15%;
+  padding-left: 2%;
+}
+
+.tagline {
+  text-transform: uppercase;
+  color: #BBC5CF;
+}
+
+.main-heading,
+.main-description {
+  width: 65%;
+  line-height: 1.2;
+}
+
+input[type="text"] {
+  width: 50%;
+  background: #BBC5CF;
+}
+
+input[type="button"] {
+  width: 24%;
+}
+
+.main-description {
+  line-height: 1.5;
+}
+
+/******************************************
+/* FEATURES
+/*******************************************/
+
+.feature-icon {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(9%) saturate(1817%) hue-rotate(169deg) brightness(94%) contrast(83%);
+}
+
+.feature-link {
+  line-height: inherit;
+}
+
+.fas {
+  line-height: 1.3;
+  padding-left: 1rem;
+}
+
+.content-wrapper>* {
+  padding-left: 12%;
+}
+
+.feature-wrapper,
+.content-wrapper {
+  height: 25%;
+  padding: 0 20%;
+}
+
+
+.features-container {
+  width: 100%;
+}
+
+.feature-container {
+  float: left;
+  width: 21%;
+  margin: 0 2%;
+  padding: 2rem;
+}
+
+.feature-container:nth-of-type(1) {
+  margin-left: 2%;
+}
+
+.feature-container:nth-of-type(4) {
+  margin-right: 2%;
+}
+
+.feature-icon {
+  width: 2.5rem;
+}
+
+.feature-heading {
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+/******************************************
+/* CONTENT
+/*******************************************/
+
+.content-container {
+  width: 55%;
+  padding-left: 2%;
+}
+
+.content-header,
+.content-description {
+  width: 70%;
+}
+
+@media screen and (max-width: 2544px) {
+  #center-nav {
+    margin: 0 23.5%;
+    width: 23.5%;
+  }
+}
