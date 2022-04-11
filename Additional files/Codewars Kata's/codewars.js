@@ -19,3 +19,36 @@ const square = (num) =>
 			.map((val) => val * val)
 			.join(''),
 	)
+
+/****************************/
+/*** Descending Order 			4/11
+/***************************/
+
+/***
+Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+Examples:
+Input: 42145 Output: 54421
+
+Input: 145263 Output: 654321
+
+Input: 123456789 Output: 987654321
+***/
+
+function descendingOrder(n) {
+	return Number(
+		n
+			.toString()
+			.split('')
+			.sort((a, b) => a - b)
+			.reverse()
+			.join(''),
+	)
+}
+descendingOrder(123456789)
+
+// ! Best Practice
+
+function descendingOrderBP(n) {
+	return parseInt(String(n).split('').sort().reverse().join(''))
+}
