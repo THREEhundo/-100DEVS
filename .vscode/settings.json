@@ -2,5 +2,6 @@
 	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
 	"prettier.jsxBracketSameLine": true,
 	"prettier.jsxSingleQuote": true,
-	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+	"liveServer.settings.port": 5501
 }
