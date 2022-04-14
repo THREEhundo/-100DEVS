@@ -15,6 +15,14 @@ img {
     margin: 0 auto;
 }
 
+#hidden-card {
+    width: 226px;
+    height: 314px;
+}
+
+.none {
+    display: none;
+}
 
 /******************************************
 /* ADDITIONAL STYLES

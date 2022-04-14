@@ -24,6 +24,13 @@ shuffleCards.addEventListener('click', () => getFetch())
 const dealCards = document.querySelector('button[name="deal"]')
 dealCards.addEventListener('click', () => dealFourCards())
 
+let card1 = document.querySelector('#card1')
+let card2 = document.querySelector('#card2')
+let card3 = document.querySelector('#card3')
+let card4 = document.querySelector('#card4')
+let result = document.querySelector('#result')
+let card1Val, card2Val, card3Val, card4Val
+
 const dealFourCards = () => {
 	let draw = fetch(
 		`https://deckofcardsapi.com/api/deck/${localStorage.getItem(
@@ -32,19 +39,29 @@ const dealFourCards = () => {
 	)
 		.then((res) => res.json())
 		.then((data) => {
-			let card1 = (document.querySelector('#card1').src = data.cards[0].image)
-			let card2 = (document.querySelector('#card2').src = data.cards[1].image)
-			let card3 = (document.querySelector('#card3').src = data.cards[2].image)
-			let card4 = (document.querySelector('#card4').src = data.cards[3].image)
-			let card1Val = cardScore(data.cards[0].value)
-			let card2Val = cardScore(data.cards[1].value)
-			let card3Val = cardScore(data.cards[2].value)
-			let card4Val = cardScore(data.cards[3].value)
-			let dealerTotal = totalScore(card1Val, card2Val)
+			card1.src = data.cards[0].image
+			card2.src = data.cards[1].image
+			card3.src = data.cards[2].image
+			card4.src = data.cards[3].image
+			card1Val = cardScore(data.cards[0].value)
+			card2Val = cardScore(data.cards[1].value)
+			card3Val = cardScore(data.cards[2].value)
+			card4Val = cardScore(data.cards[3].value)
+			let dealerTotalScore = totalScore(card1Val, card2Val)
 			let playerTotal = totalScore(card3Val, card4Val)
-			document.querySelector('#dealer-total').innerHTML = dealerTotal
+			let dealerTotal = (document.querySelector('#dealer-total').innerHTML =
+				dealerTotalScore)
 			document.querySelector('#player-total').innerHTML = playerTotal
 			document.querySelector('#cards-left').innerHTML = data.remaining
+
+			// hide first dealer card and dealer total
+			// show dealer partial total
+			let dealerPartialTotal = (document.querySelector(
+				'#dealer-partial-total',
+			).innerHTML = card2Val)
+
+			// blackjack condition
+			if (playerTotal === 21) return (result.innerHTML = 'BLACKJACK! You Win!')
 		})
 	console.log(draw.cards)
 }
