@@ -23,11 +23,6 @@ shuffleCards.addEventListener('click', () => getFetch())
 
 const dealCards = document.querySelector('button[name="deal"]')
 dealCards.addEventListener('click', () => dealFourCards())
-//
-//let card1 = document.querySelector('#card1')
-//let card2 = document.querySelector('#card2')
-//let card3 = document.querySelector('#card3')
-//let card4 = document.querySelector('#card4')
 
 const dealFourCards = () => {
 	let draw = fetch(
@@ -58,10 +53,9 @@ const dealFourCards = () => {
 // Store deck into local storage
 // 'deck_id'
 function cardScore(card) {
-	return card === 'ACE' ||
-		card === 'KING' ||
-		card === 'QUEEN' ||
-		card === 'JACK'
+	return card === 'ACE'
+		? 11
+		: card === 'KING' || card === 'QUEEN' || card === 'JACK'
 		? 10
 		: Number(card)
 }
@@ -69,3 +63,13 @@ function cardScore(card) {
 function totalScore(card1, card2) {
 	return card1 + card2
 }
+
+// hide dealer's first card
+// create stay or hit button
+// click stay -> flip over dealer first card
+// show winner
+// hit -> fetch another card and add to player 1
+// hit or stay ->
+// 1. bust
+// 2. under
+// 3. 21
