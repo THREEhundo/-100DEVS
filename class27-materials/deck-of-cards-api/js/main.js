@@ -1,62 +1,111 @@
 class BlackjackHand {
-	constructor(
-		player,
-		card1,
-		card2,
-		card3,
-		card4,
-		card5,
-		card6,
-		card7,
-		card8,
-		card1Img,
-		card2Img,
-		card3Img,
-		card4Img,
-		card5Img,
-		card6Img,
-		card7Img,
-		card8Img,
-	) {
+	constructor(player, card1, card2, card3, card4, card5, card6, card7, card8) {
 		this.player = player
-		this.card1 = card1 || 0
-		this.card2 = card2 || 0
-		this.card3 = card3 || 0
-		this.card4 = card4 || 0
-		this.card5 = card5 || 0
-		this.card6 = card6 || 0
-		this.card7 = card7 || 0
-		this.card8 = card8 || 0
-		this.card1Img = card1Img || ''
-		this.card2Img = card2Img || ''
-		this.card3Img = card3Img || ''
-		this.card4Img = card4Img || ''
-		this.card5Img = card5Img || ''
-		this.card6Img = card6Img || ''
-		this.card7Img = card7Img || ''
-		this.card8Img = card8Img || ''
+		this.card1 = card1 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
+		this.card2 = card2 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
+		this.card3 = card3 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
+		this.card4 = card4 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
+		this.card5 = card5 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
+		this.card6 = card6 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
+		this.card7 = card7 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
+		this.card8 = card8 || {
+			image: '',
+			images: '',
+			value: '',
+			suit: '',
+			code: '',
+			numVal: 0,
+		}
 	}
 	total() {
+		console.log(
+			this.card1.numVal +
+				this.card2.numVal +
+				this.card3.numVal +
+				this.card4.numVal +
+				this.card5.numVal +
+				this.card6.numVal +
+				this.card7.numVal +
+				this.card8.numVal,
+		)
 		return (
-			this.card1 +
-			this.card2 +
-			this.card3 +
-			this.card4 +
-			this.card5 +
-			this.card6 +
-			this.card7 +
-			this.card8
+			this.card1.numVal +
+			this.card2.numVal +
+			this.card3.numVal +
+			this.card4.numVal +
+			this.card5.numVal +
+			this.card6.numVal +
+			this.card7.numVal +
+			this.card8.numVal
 		)
 	}
 	dealerHiddenTotal() {
+		console.log(
+			this.card2.numVal +
+				this.card3.numVal +
+				this.card4.numVal +
+				this.card5.numVal +
+				this.card6.numVal +
+				this.card7.numVal +
+				this.card8.numVal,
+		)
 		return (
-			this.card2 +
-			this.card3 +
-			this.card4 +
-			this.card5 +
-			this.card6 +
-			this.card7 +
-			this.card8
+			this.card2.numVal +
+			this.card3.numVal +
+			this.card4.numVal +
+			this.card5.numVal +
+			this.card6.numVal +
+			this.card7.numVal +
+			this.card8.numVal
 		)
 	}
 }
@@ -94,7 +143,7 @@ let card2 = document.querySelector('#card2')
 let card3 = document.querySelector('#card3')
 let card4 = document.querySelector('#card4')
 let result = document.querySelector('#result')
-let card1Val, card2Val, card3Val, card4Val
+//let card1Val, card2Val, card3Val, card4Val
 
 const dealFourCards = () => {
 	let draw = fetch(
@@ -104,32 +153,30 @@ const dealFourCards = () => {
 	)
 		.then((res) => res.json())
 		.then((data) => {
-			card1.src = data.cards[0].image
-			dealer.card1Img = data.cards[0].image
+			dealer.card1 = data.cards[0]
+			dealer.card2 = data.cards[1]
 
-			card2.src = data.cards[1].image
-			dealer.card2Img = data.cards[1].image
+			player.card1 = data.cards[2]
+			player.card2 = data.cards[3]
 
-			card3.src = data.cards[2].image
-			player.card1Img = data.cards[2].image
+			card1.src = dealer.card1.image
+			card2.src = dealer.card2.image
 
-			card4.src = data.cards[3].image
-			player.card2Img = data.cards[3].image
+			card3.src = player.card1.image
+			card4.src = player.card2.image
 
-			card1Val = cardScore(data.cards[0].value)
-			dealer.card1 = cardScore(data.cards[0].value)
+			dealer.card1.numVal = cardScore(data.cards[0].value)
+			dealer.card2.numVal = cardScore(data.cards[1].value)
 
-			card2Val = cardScore(data.cards[1].value)
-			dealer.card2 = cardScore(data.cards[1].value)
+			player.card1.numVal = cardScore(data.cards[2].value)
+			player.card2.numVal = cardScore(data.cards[3].value)
 
-			card3Val = cardScore(data.cards[2].value)
-			player.card1 = cardScore(data.cards[2].value)
+			//card2Val = cardScore(data.cards[1].value)
 
-			card4Val = cardScore(data.cards[3].value)
-			player.card2 = cardScore(data.cards[3].value)
+			//card3Val = cardScore(data.cards[2].value)
 
-			//let dealerTotalScore = totalScore(card1Val, card2Val)
-			//let playerTotal = totalScore(card3Val, card4Val)
+			//card4Val = cardScore(data.cards[3].value)
+
 			let dealerTotal = (document.querySelector('#dealer-total').innerHTML =
 				dealer.dealerHiddenTotal())
 			document.querySelector('#player-total').innerHTML = player.total()
@@ -139,7 +186,7 @@ const dealFourCards = () => {
 			// show dealer partial total
 			let dealerPartialTotal = (document.querySelector(
 				'#dealer-partial-total',
-			).innerHTML = card2Val)
+			).innerHTML = dealer.dealerHiddenTotal())
 
 			// blackjack condition
 			if (player.total() === 21)
@@ -157,10 +204,6 @@ function cardScore(card) {
 		: card === 'KING' || card === 'QUEEN' || card === 'JACK'
 		? 10
 		: Number(card)
-}
-
-function totalScore(card1, card2) {
-	return card1 + card2
 }
 
 // hide dealer's first card
