@@ -1,4 +1,69 @@
-//Example fetch using pokemonapi.co
+class BlackjackHand {
+	constructor(
+		player,
+		card1,
+		card2,
+		card3,
+		card4,
+		card5,
+		card6,
+		card7,
+		card8,
+		card1Img,
+		card2Img,
+		card3Img,
+		card4Img,
+		card5Img,
+		card6Img,
+		card7Img,
+		card8Img,
+	) {
+		this.player = player
+		this.card1 = card1 || 0
+		this.card2 = card2 || 0
+		this.card3 = card3 || 0
+		this.card4 = card4 || 0
+		this.card5 = card5 || 0
+		this.card6 = card6 || 0
+		this.card7 = card7 || 0
+		this.card8 = card8 || 0
+		this.card1Img = card1Img || ''
+		this.card2Img = card2Img || ''
+		this.card3Img = card3Img || ''
+		this.card4Img = card4Img || ''
+		this.card5Img = card5Img || ''
+		this.card6Img = card6Img || ''
+		this.card7Img = card7Img || ''
+		this.card8Img = card8Img || ''
+	}
+	total() {
+		return (
+			this.card1 +
+			this.card2 +
+			this.card3 +
+			this.card4 +
+			this.card5 +
+			this.card6 +
+			this.card7 +
+			this.card8
+		)
+	}
+	dealerHiddenTotal() {
+		return (
+			this.card2 +
+			this.card3 +
+			this.card4 +
+			this.card5 +
+			this.card6 +
+			this.card7 +
+			this.card8
+		)
+	}
+}
+
+const dealer = new BlackjackHand('Dealer')
+const player = new BlackjackHand('Player')
+console.log(dealer)
 document.querySelector('button').addEventListener('click', getFetch)
 
 function getFetch() {
@@ -40,18 +105,34 @@ const dealFourCards = () => {
 		.then((res) => res.json())
 		.then((data) => {
 			card1.src = data.cards[0].image
+			dealer.card1Img = data.cards[0].image
+
 			card2.src = data.cards[1].image
+			dealer.card2Img = data.cards[1].image
+
 			card3.src = data.cards[2].image
+			player.card1Img = data.cards[2].image
+
 			card4.src = data.cards[3].image
+			player.card2Img = data.cards[3].image
+
 			card1Val = cardScore(data.cards[0].value)
+			dealer.card1 = cardScore(data.cards[0].value)
+
 			card2Val = cardScore(data.cards[1].value)
+			dealer.card2 = cardScore(data.cards[1].value)
+
 			card3Val = cardScore(data.cards[2].value)
+			player.card1 = cardScore(data.cards[2].value)
+
 			card4Val = cardScore(data.cards[3].value)
-			let dealerTotalScore = totalScore(card1Val, card2Val)
-			let playerTotal = totalScore(card3Val, card4Val)
+			player.card2 = cardScore(data.cards[3].value)
+
+			//let dealerTotalScore = totalScore(card1Val, card2Val)
+			//let playerTotal = totalScore(card3Val, card4Val)
 			let dealerTotal = (document.querySelector('#dealer-total').innerHTML =
-				dealerTotalScore)
-			document.querySelector('#player-total').innerHTML = playerTotal
+				dealer.dealerHiddenTotal())
+			document.querySelector('#player-total').innerHTML = player.total()
 			document.querySelector('#cards-left').innerHTML = data.remaining
 
 			// hide first dealer card and dealer total
@@ -61,7 +142,8 @@ const dealFourCards = () => {
 			).innerHTML = card2Val)
 
 			// blackjack condition
-			if (playerTotal === 21) return (result.innerHTML = 'BLACKJACK! You Win!')
+			if (player.total() === 21)
+				return (result.innerHTML = 'BLACKJACK! You Win!')
 		})
 	console.log(draw.cards)
 }
@@ -84,6 +166,12 @@ function totalScore(card1, card2) {
 // hide dealer's first card
 // create stay or hit button
 // click stay -> flip over dealer first card
+const stay = document.querySelector('button[name="stay"]')
+stay.addEventListener('click', () => {
+	flipDealersCard()
+})
+
+function flipDealersCard() {}
 // show winner
 // hit -> fetch another card and add to player 1
 // hit or stay ->
