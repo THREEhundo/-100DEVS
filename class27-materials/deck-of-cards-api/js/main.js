@@ -143,6 +143,9 @@ let card2 = document.querySelector('#card2')
 let card3 = document.querySelector('#card3')
 let card4 = document.querySelector('#card4')
 let result = document.querySelector('#result')
+let hiddenCard = document.querySelector('#hidden-card')
+let dealerTotal = document.querySelector('#dealer-total')
+let dealerPartialTotal = document.querySelector('#dealer-partial-total')
 //let card1Val, card2Val, card3Val, card4Val
 
 const dealFourCards = () => {
@@ -178,15 +181,13 @@ const dealFourCards = () => {
 			//card4Val = cardScore(data.cards[3].value)
 
 			let dealerTotal = (document.querySelector('#dealer-total').innerHTML =
-				dealer.dealerHiddenTotal())
+				dealer.total())
 			document.querySelector('#player-total').innerHTML = player.total()
 			document.querySelector('#cards-left').innerHTML = data.remaining
 
 			// hide first dealer card and dealer total
 			// show dealer partial total
-			let dealerPartialTotal = (document.querySelector(
-				'#dealer-partial-total',
-			).innerHTML = dealer.dealerHiddenTotal())
+			dealerPartialTotal.innerHTML = dealer.dealerHiddenTotal()
 
 			// blackjack condition
 			if (player.total() === 21)
@@ -214,7 +215,16 @@ stay.addEventListener('click', () => {
 	flipDealersCard()
 })
 
-function flipDealersCard() {}
+function flipDealersCard() {
+	hiddenCard.classList.add('none')
+	card1.classList.remove('none')
+	dealerPartialTotal.classList.add('none')
+	dealerTotal.classList.toggle('none')
+	if (dealer.total() === 21)
+		result.innerHTML = 'Dealer has Blackjack! You Lose!'
+	if (dealer.total() > 21) result.innerHTML = 'Dealer busted! You Win!'
+	if (dealer.total() < 21) return /* fetch again return */
+}
 // show winner
 // hit -> fetch another card and add to player 1
 // hit or stay ->
