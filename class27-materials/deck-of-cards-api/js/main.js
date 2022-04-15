@@ -16,6 +16,7 @@ class BlackjackHand {
 
 const dealer = new BlackjackHand('Dealer')
 const player = new BlackjackHand('Player')
+const dealerAndPlayer = [dealer, player]
 console.log(dealer)
 document.querySelector('button').addEventListener('click', getFetch)
 
@@ -141,6 +142,7 @@ function dealerFirstHit() {
 
 			let nextCard = document.createElement('img')
 			nextCard.src = nextFetchedCard.image
+			nextCard.classList.add('hit-card')
 
 			dealerCards.appendChild(nextCard)
 			//if (
@@ -168,9 +170,26 @@ function dealerFirstHit() {
 				result.innerHTML = `Player Wins`
 		})
 }
-// show winner
-// hit -> fetch another card and add to player 1
-// hit or stay ->
-// 1. bust
-// 2. under
-// 3. 21
+
+const nextHandBtn = document.querySelector('button[name="next-hand"]')
+nextHandBtn.addEventListener('click', clearHands)
+
+// ! New Hand needs to have first dealer card face down.
+// ! Result h1 needs to be cleared
+// ! third card + needs to be removed
+function clearHands() {
+	dealerAndPlayer.forEach((player) => (player.hand = []))
+	document.querySelectorAll('img').src = ''
+	result.innerHTML = ``
+	//while (dealerCards.childElementCount > 3) dealCards.
+	removeElementsByClass('hit-card')
+	dealFourCards()
+}
+
+// removes card images for the extra hit cards
+function removeElementsByClass(className) {
+	const elements = document.getElementsByClassName(className)
+	while (elements.length > 0) {
+		elements[0].parentNode.removeChild(elements[0])
+	}
+}
