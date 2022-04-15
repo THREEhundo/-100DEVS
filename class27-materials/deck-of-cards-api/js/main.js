@@ -1,112 +1,16 @@
 class BlackjackHand {
-	constructor(player, card1, card2, card3, card4, card5, card6, card7, card8) {
+	constructor(player, hand) {
 		this.player = player
-		this.card1 = card1 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
-		this.card2 = card2 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
-		this.card3 = card3 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
-		this.card4 = card4 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
-		this.card5 = card5 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
-		this.card6 = card6 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
-		this.card7 = card7 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
-		this.card8 = card8 || {
-			image: '',
-			images: '',
-			value: '',
-			suit: '',
-			code: '',
-			numVal: 0,
-		}
+		this.hand = []
 	}
 	total() {
-		console.log(
-			this.card1.numVal +
-				this.card2.numVal +
-				this.card3.numVal +
-				this.card4.numVal +
-				this.card5.numVal +
-				this.card6.numVal +
-				this.card7.numVal +
-				this.card8.numVal,
-		)
-		return (
-			this.card1.numVal +
-			this.card2.numVal +
-			this.card3.numVal +
-			this.card4.numVal +
-			this.card5.numVal +
-			this.card6.numVal +
-			this.card7.numVal +
-			this.card8.numVal
-		)
+		return this.hand.reduce((acc, curr) => (acc += curr.numVal), 0)
 	}
-	dealerHiddenTotal() {
-		console.log(
-			this.card2.numVal +
-				this.card3.numVal +
-				this.card4.numVal +
-				this.card5.numVal +
-				this.card6.numVal +
-				this.card7.numVal +
-				this.card8.numVal,
-		)
-		return (
-			this.card2.numVal +
-			this.card3.numVal +
-			this.card4.numVal +
-			this.card5.numVal +
-			this.card6.numVal +
-			this.card7.numVal +
-			this.card8.numVal
-		)
+	dealerTwoCardTotal() {
+		if (this.player === 'Player') return
+		let handCopy = [...this.hand]
+		let hiddenHand = handCopy.shift()
+		return hiddenHand.numVal
 	}
 }
 
@@ -156,29 +60,20 @@ const dealFourCards = () => {
 	)
 		.then((res) => res.json())
 		.then((data) => {
-			dealer.card1 = data.cards[0]
-			dealer.card2 = data.cards[1]
+			dealer.hand.push(data.cards[0], data.cards[1])
+			player.hand.push(data.cards[2], data.cards[3])
 
-			player.card1 = data.cards[2]
-			player.card2 = data.cards[3]
+			card1.src = dealer.hand[0].image
+			card2.src = dealer.hand[1].image
 
-			card1.src = dealer.card1.image
-			card2.src = dealer.card2.image
+			card3.src = player.hand[0].image
+			card4.src = player.hand[1].image
 
-			card3.src = player.card1.image
-			card4.src = player.card2.image
+			dealer.hand[0].numVal = cardScore(data.cards[0].value)
+			dealer.hand[1].numVal = cardScore(data.cards[1].value)
 
-			dealer.card1.numVal = cardScore(data.cards[0].value)
-			dealer.card2.numVal = cardScore(data.cards[1].value)
-
-			player.card1.numVal = cardScore(data.cards[2].value)
-			player.card2.numVal = cardScore(data.cards[3].value)
-
-			//card2Val = cardScore(data.cards[1].value)
-
-			//card3Val = cardScore(data.cards[2].value)
-
-			//card4Val = cardScore(data.cards[3].value)
+			player.hand[0].numVal = cardScore(data.cards[2].value)
+			player.hand[1].numVal = cardScore(data.cards[3].value)
 
 			let dealerTotal = (document.querySelector('#dealer-total').innerHTML =
 				dealer.total())
@@ -187,7 +82,7 @@ const dealFourCards = () => {
 
 			// hide first dealer card and dealer total
 			// show dealer partial total
-			dealerPartialTotal.innerHTML = dealer.dealerHiddenTotal()
+			dealerPartialTotal.innerHTML = dealer.dealerTwoCardTotal()
 
 			// blackjack condition
 			if (player.total() === 21)
@@ -223,7 +118,15 @@ function flipDealersCard() {
 	if (dealer.total() === 21)
 		result.innerHTML = 'Dealer has Blackjack! You Lose!'
 	if (dealer.total() > 21) result.innerHTML = 'Dealer busted! You Win!'
-	if (dealer.total() < 21) return /* fetch again return */
+	if (dealer.total() < 17) return /* fetch again return */
+}
+
+function dealerHits() {
+	fetch(
+		`https://deckofcardsapi.com/api/deck/${localStorage.getItem(
+			'deck_id',
+		)}/draw/?count=1`,
+	)
 }
 // show winner
 // hit -> fetch another card and add to player 1
