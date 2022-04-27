@@ -88,7 +88,7 @@ const dealFourCards = () => {
 			dealerPartialTotal.innerHTML = dealer.dealerTwoCardTotal()
 
 			// blackjack condition
-			if (player.total() === 21)
+			if (player.total() === 21 && dealer.total() !== 21)
 				return (result.innerHTML = 'BLACKJACK! You Win!')
 		})
 	console.log(draw.cards)
@@ -124,6 +124,16 @@ function flipDealersCard() {
 		result.innerHTML = 'Dealer busted! You Win!'
 	if (dealer.total() < 17 && player.total() <= 21)
 		dealerFirstHit() /* fetch again return */
+	if (
+		dealer.total() > 16 &&
+		dealer.total() < 22 &&
+		player.total() > dealer.total()
+	)
+		result.innerHTML = 'Player wins!'
+	if (dealer.total() > player.total() && dealer.total() <= 21)
+		result.innerHTML = 'Dealer wins!'
+	if (dealer.total() == player.total() && dealer.total() <= 21)
+		result.innerHTML = 'Push!'
 }
 
 // ! Use data to count card and keep adding?
@@ -193,3 +203,5 @@ function removeElementsByClass(className) {
 		elements[0].parentNode.removeChild(elements[0])
 	}
 }
+
+// ! need dealers first card to be hidden on next hand
