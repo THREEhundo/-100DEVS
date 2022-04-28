@@ -205,3 +205,5 @@ function removeElementsByClass(className) {
 }
 
 // ! need dealers first card to be hidden on next hand
+// toggle hidden class on dealer first card
+// hide first card actual
