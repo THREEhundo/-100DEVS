@@ -74,12 +74,12 @@ class FrontEndEngineer extends Contractor {
 		this._tech = tech
 	}
 
-	techStack() {
+	get tech() {
 		return this._tech
 	}
 	stateYourNameAndRole() {
 		super(this.stateYourName())
-		console.log(`My techstack is ${techStack()}`)
+		console.log(`My techstack is ${tech()}`)
 	}
 }
 
@@ -88,11 +88,12 @@ class BackEndEngineer extends Contractor {
 		super(name, role)
 		this._tech = tech
 	}
-	techStack() {
+	get tech() {
 		return this._tech
 	}
+
 	stateYourNameAndRole() {
 		super(this.stateYourName())
-		console.log(`My techstack is ${techStack()}`)
+		console.log(`My techstack is ${tech()}`)
 	}
 }
