@@ -15,8 +15,8 @@ class Player {
 }
 
 class Dealer extends Player {
-	constructor() {
-		super(hand)
+	constructor(player, hand) {
+		super(player, hand)
 	}
 
 	dealerTwoCardTotal() {
@@ -112,7 +112,8 @@ class Deck {
 		fetch(url)
 			.then((res) => res.json()) // parse response as JSON
 			.then((data) => {
-				currentDeck.deckData = data
+				this.deckData = data
+				console.log(this.deckData)
 				this.setLocalStorage()
 				this.showRemainingCardsInDeck()
 			})
@@ -123,7 +124,7 @@ class Deck {
 
 	// set local storage
 	setLocalStorage() {
-		localStorage.setItem('deck_id', this.deckData.deckID)
+		return localStorage.setItem('deck_id', this.deckData.deck_id)
 	}
 	// show remaining cards
 	showRemainingCardsInDeck() {
@@ -287,7 +288,7 @@ function cardScore(card) {
 // click stay -> flip over dealer first card
 
 stay.addEventListener('click', () => {
-	flipFaceDownCard()
+	dealer.flipFaceDownCard()
 })
 
 function flipDealersCard() {
