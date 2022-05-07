@@ -272,3 +272,16 @@ String.prototype.toJadenCase = function () {
 }
 
 let str = "How can mirrors be real if our eyes aren't real"
+
+str.toJadenCase()
+
+/****************************/
+/*** Remove String Spaces	5/5
+/***************************/
+
+/**
+ * Simple, remove the spaces from the string, then return the resultant string.
+ */
+
+// Wrote best practice solution!
+const noSpace = (x) => x.split(' ').join('')
