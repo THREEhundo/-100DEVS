@@ -55,7 +55,7 @@ class Dealer extends Player {
 			.then((res) => res.json())
 			.then((data) => {
 				let nextFetchedCard = data.cards[0]
-				nextFetchedCard.numVal = cardScore(data.cards[0].value)
+				nextFetchedCard.numVal = currentDeck.cardScore(data.cards[0].value)
 				dealer.hand = [...dealer.hand, nextFetchedCard]
 				dealerTotal.innerHTML = super.total()
 
@@ -91,17 +91,7 @@ class Dealer extends Player {
 	}
 }
 
-//let blob = {
-//	name: 'Ditto',
-//	setName: function () {
-//		console.log(`Name is ${this.name}`)
-//		this.sayName()
-//	},
-//	sayName: function () {
-//		console.log(`yoyoyo`)
-//	}
-//}
-//blob.setName()
+// ! Either pass dealer and player or add them as children?
 class Deck {
 	constructor() {
 		this.deckData
@@ -131,7 +121,7 @@ class Deck {
 		cardsLeft.innerHTML = this.deckData.remaining
 	}
 	// Draw Cards Method
-	dealHand() {
+	dealHand(dealer, player) {
 		fetch(
 			`https://deckofcardsapi.com/api/deck/${localStorage.getItem(
 				'deck_id'
@@ -140,6 +130,7 @@ class Deck {
 			.then((res) => res.json())
 			.then((data) => {
 				this.deckData = data
+				console.log(this.deckData.cards[0])
 				dealer.hand.push(this.deckData.cards[0], this.deckData.cards[1])
 				player.hand.push(this.deckData.cards[2], this.deckData.cards[3])
 
@@ -168,6 +159,7 @@ class Deck {
 					return (result.innerHTML = 'BLACKJACK! You Win!')
 			})
 	}
+	// score of each card
 	cardScore(card) {
 		return card === 'ACE'
 			? 11
@@ -176,6 +168,7 @@ class Deck {
 			: Number(card)
 	}
 
+	// Clear Hands
 	clearHands() {
 		dealerAndPlayer.forEach((player) => (player.hand = []))
 		document.querySelectorAll('img').src = ''
@@ -183,7 +176,7 @@ class Deck {
 		result.innerHTML = ``
 		//while (dealerCards.childElementCount > 3) dealCards.
 		removeElementsByClass('hit-card')
-		currentDeck.dealHand()
+		currentDeck.dealHand(dealer, player)
 	}
 }
 // remove display for img
@@ -215,73 +208,73 @@ document
 	.querySelector('button')
 	.addEventListener('click', currentDeck.fetchDeck())
 
-function getFetch() {
-	const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6'
-	fetch(url)
-		.then((res) => res.json()) // parse response as JSON
-		.then((data) => {
-			currentDeck.fetchDeck()
-			localStorage.setItem('deck_id', data.deck_id)
-			document.querySelector('#cards-left').innerHTML = data.remaining
-		})
-		.catch((err) => {
-			console.log(`error ${err}`)
-		})
-}
+//function getFetch() {
+//	const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6'
+//	fetch(url)
+//		.then((res) => res.json()) // parse response as JSON
+//		.then((data) => {
+//			currentDeck.fetchDeck()
+//			localStorage.setItem('deck_id', data.deck_id)
+//			document.querySelector('#cards-left').innerHTML = data.remaining
+//		})
+//		.catch((err) => {
+//			console.log(`error ${err}`)
+//		})
+//}
 
 shuffleCards.addEventListener('click', () => currentDeck.fetchDeck())
 
-dealCards.addEventListener('click', () => currentDeck.dealHand())
+dealCards.addEventListener('click', () => currentDeck.dealHand(dealer, player))
 
-const dealFourCards = () => {
-	let draw = fetch(
-		`https://deckofcardsapi.com/api/deck/${localStorage.getItem(
-			'deck_id'
-		)}/draw/?count=4`
-	)
-		.then((res) => res.json())
-		.then((data) => {
-			dealer.hand.push(data.cards[0], data.cards[1])
-			player.hand.push(data.cards[2], data.cards[3])
-
-			card1.src = dealer.hand[0].image
-			card2.src = dealer.hand[1].image
-
-			card3.src = player.hand[0].image
-			card4.src = player.hand[1].image
-
-			dealer.hand[0].numVal = cardScore(data.cards[0].value)
-			dealer.hand[1].numVal = cardScore(data.cards[1].value)
-
-			player.hand[0].numVal = cardScore(data.cards[2].value)
-			player.hand[1].numVal = cardScore(data.cards[3].value)
-
-			let dealerTotal = (document.querySelector('#dealer-total').innerHTML =
-				dealer.total())
-			playerTotal.innerHTML = player.total()
-			cardsLeft.innerHTML = data.remaining
-
-			// hide first dealer card and dealer total
-			// show dealer partial total
-			dealerPartialTotal.innerHTML = dealer.dealerTwoCardTotal()
-
-			// blackjack condition
-			if (player.total() === 21 && dealer.total() !== 21)
-				return (result.innerHTML = 'BLACKJACK! You Win!')
-		})
-	console.log(draw.cards)
-}
+//const dealFourCards = () => {
+//	let draw = fetch(
+//		`https://deckofcardsapi.com/api/deck/${localStorage.getItem(
+//			'deck_id'
+//		)}/draw/?count=4`
+//	)
+//		.then((res) => res.json())
+//		.then((data) => {
+//			dealer.hand.push(data.cards[0], data.cards[1])
+//			player.hand.push(data.cards[2], data.cards[3])
+//
+//			card1.src = dealer.hand[0].image
+//			card2.src = dealer.hand[1].image
+//
+//			card3.src = player.hand[0].image
+//			card4.src = player.hand[1].image
+//
+//			dealer.hand[0].numVal = cardScore(data.cards[0].value)
+//			dealer.hand[1].numVal = cardScore(data.cards[1].value)
+//
+//			player.hand[0].numVal = cardScore(data.cards[2].value)
+//			player.hand[1].numVal = cardScore(data.cards[3].value)
+//
+//			let dealerTotal = (document.querySelector('#dealer-total').innerHTML =
+//				dealer.total())
+//			playerTotal.innerHTML = player.total()
+//			cardsLeft.innerHTML = data.remaining
+//
+//			// hide first dealer card and dealer total
+//			// show dealer partial total
+//			dealerPartialTotal.innerHTML = dealer.dealerTwoCardTotal()
+//
+//			// blackjack condition
+//			if (player.total() === 21 && dealer.total() !== 21)
+//				return (result.innerHTML = 'BLACKJACK! You Win!')
+//		})
+//	console.log(draw.cards)
+//}
 
 // ! HW
 // Store deck into local storage
 // 'deck_id'
-function cardScore(card) {
-	return card === 'ACE'
-		? 11
-		: card === 'KING' || card === 'QUEEN' || card === 'JACK'
-		? 10
-		: Number(card)
-}
+//function cardScore(card) {
+//	return card === 'ACE'
+//		? 11
+//		: card === 'KING' || card === 'QUEEN' || card === 'JACK'
+//		? 10
+//		: Number(card)
+//}
 
 // hide dealer's first card
 // create stay or hit button
