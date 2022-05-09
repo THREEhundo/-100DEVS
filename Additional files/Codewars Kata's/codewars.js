@@ -1,3 +1,4 @@
+document.querySelector('body').style.color = 'black'
 // ! Square each individual number and return the value
 
 function squareDigits(num) {
@@ -87,7 +88,6 @@ const getMiddle = (s) => {
 	let charArr = s.split('')
 	// get length
 	let length = charArr.length
-	console.log(charArr, length, length % 2)
 	// even -> return middle 2 chars
 	if (length % 2 === 0) {
 		let middleEnd = length / 2 + 1
@@ -98,7 +98,6 @@ const getMiddle = (s) => {
 	// odd -> return middle char
 	if (length % 2 !== 0) {
 		let middle = Math.floor(length / 2)
-		console.log(charArr[middle])
 		return charArr[middle]
 	}
 }
@@ -149,7 +148,6 @@ In this kata you will create a function that takes a list of non-negative intege
 
 function filter_list(l) {
 	return l.filter((item) => {
-		console.log(typeof 0)
 		if (typeof item === 'number' || item === 0) {
 			return item
 		} else {
@@ -158,7 +156,6 @@ function filter_list(l) {
 	})
 }
 let test = filter_list([1, 'a', 'b', 0, 15])
-console.log(test)
 // Why does 0 not pass the test?
 
 // !BEST PRACTICE
@@ -255,3 +252,22 @@ const findNeedleBestPractice = (haystack) =>
 
 // !BEST PRACTICES
 const binaryArrayToNumber = (arr) => parseInt(arr.join(''), 2)
+
+/****************************/
+/*** Jaden Casing Strings	5/4
+/***************************/
+
+/**
+ * Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+
+Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+ */
+
+// changed function argument to this so that split does not return undefined
+String.prototype.toJadenCase = function () {
+	return this.split(' ')
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(' ')
+}
+
+let str = "How can mirrors be real if our eyes aren't real"
