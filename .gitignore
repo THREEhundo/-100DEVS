@@ -2,3 +2,5 @@
 .DS_Store
 JavaScript30
 .env
+
+node_modules
