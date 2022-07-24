@@ -72,3 +72,24 @@ function updateNumber(element, number) {
 }
 
 setInterval(updateTime, 100)
+
+/*** ANIMATION
+ * Get Market price from API
+ * Get yesterday's market high || get market price 24hrs ago.
+ *
+ * Store market price into a variable
+ * Store previous market price into a variable
+ *
+ * start clock at prev --> flip to current price
+ *
+ * animation attributes
+ * 1. 0.25sec flip time
+ * 2. end number + green
+ * 3. end number - red
+ *
+ */
+
+/*** SETTING ANIMATION TO FIXED IMAGE POINT
+ * ? Absolute value based on image width and height -> needs to be fixed
+ * ? Relative value based on viewport
+ */
